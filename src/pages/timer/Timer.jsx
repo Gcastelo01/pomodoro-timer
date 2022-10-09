@@ -23,6 +23,7 @@ export default function Timer() {
             <AiOutlineMenu />
           </div>
 
+
           <div className="timer_head__title">
             Pomodoro Timer
           </div>
