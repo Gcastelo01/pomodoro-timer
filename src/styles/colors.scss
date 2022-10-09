@@ -1,0 +1,17 @@
+// Definindo esquema de Cores
+
+$main-red: #FE3F3F;
+$menu-red: #FE6565;
+$hover-red: #FE8C8C;
+$dark-red: #970005;
+$white: #FFFFFF;
+$main-blue: #0C44AC;
+$dark-blue: #000052;
+
+$colors: (
+    main-red: $main-red,
+    dark-red: $dark-red,
+    white: $white,
+    main-blue: $main-blue,
+    dark-blue: $dark-blue
+)

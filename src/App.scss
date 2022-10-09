@@ -1,0 +1,11 @@
+@import './styles/colors.scss';
+
+.main{
+    display: flex;
+    flex-direction: column;
+
+    background-color: --main-red;
+    width: 100hw;
+    height: 100vh;
+
+}
