@@ -15,7 +15,7 @@ export default function Timer() {
   }
 
   const handleHide = () => {
-    setUseMenu(false);
+    setUseMenu(false); 
   }
 
   return (
