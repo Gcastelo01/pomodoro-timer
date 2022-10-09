@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route index path='/' element={<Timer />} />
-        <Route path='about' element={<About />} />
+        <Route path='/about' element={<About />} />
       </Routes>
     </BrowserRouter>
   );
