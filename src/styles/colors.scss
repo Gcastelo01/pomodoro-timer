@@ -1,17 +1,12 @@
-// Definindo esquema de Cores
+// Definindo esquema de Cores padrão do app
 
-$main-red: #FE3F3F;
-$menu-red: #FE6565;
-$hover-red: #FE8C8C;
-$dark-red: #970005;
-$white: #FFFFFF;
-$main-blue: #0C44AC;
-$dark-blue: #000052;
-
-$colors: (
-    main-red: $main-red,
-    dark-red: $dark-red,
-    white: $white,
-    main-blue: $main-blue,
-    dark-blue: $dark-blue
-)
+$white: #FDFFFC;
+$black: #011627;
+$dark-blue: #1255FF;
+$mid-blue: #3471FE;
+$light-blue: #729EFD;
+$ul-blue: #B0CBFD;
+$ul-red: #F8B5BD;
+$light-red: #F17E8C;
+$mid-red: #EE596A;
+$dark-red: #E82139;

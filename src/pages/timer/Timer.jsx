@@ -1,21 +1,73 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useCountdown } from "usehooks-ts";
 
 import './Timer.scss';
 import { AiOutlineMenu } from 'react-icons/ai'
-import { Offcanvas } from "react-bootstrap";
+import { Offcanvas, Button } from "react-bootstrap";
 
 export default function Timer() {
   const [useMenu, setUseMenu] = useState(false);
+  const [timerOn, setTimerOn] = useState(false);
+  const [pause, setPause] = useState(false);
 
-  const navigate = useNavigate();
+  const [pauseMessage, setPauseMessage] = useState("Pausar");
+
+  const [count, { startCountdown, stopCountdown, resetCountdown }] = useCountdown(
+    {
+      countStart: 1500,
+      intervalMs: 1000
+    }
+  )
+
+  const [buttonMessage, setButtonMessage] = useState("Iniciar");
+
+
+  const onStartStopClick = () => {
+    let mensagem = buttonMessage === "Iniciar" ? "Parar" : "Iniciar";
+
+    if(timerOn){
+      resetCountdown();
+      setTimerOn(false);
+      setButtonMessage(mensagem);
+
+    }else{
+      setTimerOn(true);
+      startCountdown();
+      setButtonMessage(mensagem);
+      
+    }
+  }
 
   const handleMenuClick = () => {
     setUseMenu(true);
   }
 
   const handleHide = () => {
-    setUseMenu(false); 
+    setUseMenu(false);
+  }
+
+  const handlePause = () => {
+    var msg = pauseMessage === "Pausar" ? "Continuar!" : "Pausar";
+    setPauseMessage(msg);
+
+    if (pause) {
+      startCountdown();
+
+    } else {
+      stopCountdown();
+
+    }
+
+    setPause(!pause);
+  }
+
+  const timeParser = (t) => {
+    var minutes = Math.floor(t / 60);
+    var seconds = t - minutes * 60;
+    if (seconds < 10) seconds = "0" + seconds;
+    if (minutes < 10) minutes = "0" + minutes;
+    return minutes + ":" + seconds
   }
 
   return (
@@ -39,6 +91,26 @@ export default function Timer() {
             Pomodoro Timer
           </div>
         </div>
+
+        <div className="timer_body">
+          <div title={timeParser(count)} className={`timer_body_circle ${timerOn ? "start" : "stop"}`}>
+            {!timerOn && timeParser(count)}
+          </div>
+          <div className="timer_body_button">
+            <Button onClick={onStartStopClick} variant="outline-primary" size="lg" bsPrefix='timer_body_button_myButton' >
+              {buttonMessage}
+            </Button>
+            {timerOn && (
+              <Button onClick={handlePause} variant="outline-primary" size="lg" bsPrefix='timer_body_button_myButton'>
+                {pauseMessage}
+              </Button>
+            )}
+          </div>
+          <div className="timer_body_pomodoroCount">
+            Pomodoros transcorridos: { }
+          </div>
+        </div>
+
       </div>
     </>
   );

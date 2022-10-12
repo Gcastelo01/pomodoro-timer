@@ -18,6 +18,7 @@
     "react-scripts": "5.0.1",
     "sass": "^1.55.0",
     "sweetalert2": "^11.4.38",
+    "usehooks-ts": "^2.7.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

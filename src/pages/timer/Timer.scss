@@ -2,14 +2,12 @@
 
 .timer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 100vh;
   width: 100%;
   justify-items: center;
 
   font-family: 'Ubuntu', sans-serif;
-  color: $white;
-  background-color: $main-red;
 
   &_head {
     display: flex;
@@ -36,20 +34,156 @@
     }
 
     &_menu:hover {
-      background-color: #FE8C8C;
+      background-color: $white;
       border-radius: 100px;
     }
 
     &__title {
+      position: absolute;
       margin-right: auto;
       margin-top: 33px;
+    }
+
+  }
+
+  &_body {
+    height: 100%;
+    display: flex;
+    place-content: center;
+
+    &_button {
+      position: absolute;
+      bottom: 10%;
+
+      &_myButton {
+        font-family: 'Ubuntu', sans-serif;
+        color: $dark-red;
+        background-color: $white;
+        border: 1px solid $dark-red;
+        border-radius: 8px;
+        width: 120px;
+        height: 40px;
+        margin-left: 5px;
+      }
+
+      &_myButton:hover {
+        color: $white;
+        border: none;
+        background-color: $light-red;
+        transition: 0.8s;
+      }
+    }
+
+    &_circle.stop {
+      
+      position: absolute;
+      text-align: center;
+      text-anchor: middle;
+      align-self: center;
+      justify-self: center;
+
+      // justify-content: center;
+      // align-items: center;
+      // text-align: center;
+      // align-content: center;
+
+      top: 45%;
+      // width: 200px;
+      // height: 200px;
+
+      // background-color: white;
+      // border-radius: 1000px;
+      // box-shadow: 0 0 8px rgba(0, 0, 0, .3);
+      // display: block;
+
+      font-family: 'Ubuntu', sans-serif;
+      font-weight: 700px;
+      font-size: 48px;
+      color: $black;
+    }
+
+    &_circle.start {
+      position: absolute;
+      text-align: center;
+      text-anchor: middle;
+
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 200px;
+      height: 200px;
+
+
+      font-family: 'Ubuntu', sans-serif;
+      font-weight: 700px;
+      font-size: 25px;
+      color: $dark-red;
+
+      &:before {
+        content: '';
+        position: relative;
+        display: block;
+        width: 252%;
+        height: 252%;
+        box-sizing: border-box;
+        margin-left: -77%;
+        margin-top: -77%;
+        border-radius: 1000px;
+        background-color: $mid-red;
+        animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+
+      }
+
+      &:after {
+        content: attr(title);
+        padding-top: 40%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        border-radius: 1000px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, .3);
+        animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -.4s infinite;
+
+      }
+    }
+
+    @keyframes pulse-ring {
+      0% {
+        transform: scale(.10);
+      }
+
+      80%,
+      100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes pulse-dot {
+      0% {
+        transform: scale(.8);
+      }
+
+      50% {
+        transform: scale(1);
+      }
+
+      100% {
+        transform: scale(.8);
+      }
+    }
+
+    &_pomodoroCount {
+      position: absolute;
+      bottom: 3%;
     }
   }
 }
 
 .timer_menu {
-  color: $white;
-  background-color: $main-red;
   display: flex;
   border: none;
   border-radius: 10px;
@@ -60,16 +194,17 @@
     margin-left: 34%
   }
 
-  &_body{
+  &_body {
     display: flex;
     flex-direction: column;
 
-    &_item{
+    &_item {
       display: flex;
       flex-direction: column;
       justify-content: center;
 
-      color: $white;
+      color: $black;
+
       font-size: 25px;
       font-weight: 500;
       text-align: center;
@@ -78,11 +213,11 @@
       border-bottom: none;
 
       text-decoration: none;
-      color: $white;
     }
-    &_item:hover{
-      color: $white;
-      background-color: #FE8C8C;
+
+    &_item:hover {
+      color: $black;
+      background-color: $ul-blue;
       border-radius: 8px;
     }
   }
